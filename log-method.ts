@@ -1,4 +1,4 @@
-export function logMethod(target, property, descriptor) {
+export function logMethod(target:Object, property:string, descriptor:PropertyDescriptor) {
     const method = descriptor.value;
 
     return {
@@ -6,7 +6,7 @@ export function logMethod(target, property, descriptor) {
         value: (...args) => {
             console.log(`call ${property}`);
             const result = method.apply(target, args);
-            console.log(`${property} returned =>`, result);
+            console.log(`${args} returned =>`, result);
             return result;
         },
     };
